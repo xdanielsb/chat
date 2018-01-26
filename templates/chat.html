@@ -1,31 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="author" content="Daniel Santos">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
   <title>Chat</title>
+  <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      var socket = io.connect('http://127.0.0.1:5000')
-      socket.on('connect', function(){
-        socket.send('User has connected')
-      })
-      socket.on('message', function(msg){
-        $("#messages").append('<li>'+msg+'</li>')
-      })
-      $("#btnmsg").on('click', function(){
-        socket.send($("#myMessage").val())
-        $("#myMessage").val('')
-      })
-    })
-  </script>
-  <ul id="messages"></ul>
-  <input type="text" id="myMessage"/>
-  <button name="button" id="btnmsg">send</button>
+  <div class="ui">
+    <div class="chat">
+      <div class="top">
+        <div class="avatar">
+          <img width="50" height="50" src="https://avatars3.githubusercontent.com/u/17663363?s=460&v=4">
+        </div>
+        <div class="info">
+          <div class="name">Daniel Bot </div>
+        </div>
+      </div>
+      <ul class="messages"> </ul>
+      <div class="write-form">
+        <textarea placeholder="Type your message" name="e" id="texxt" rows="2"></textarea>
+        <span class="send">Send</span>
+      </div>
+    </div>
+  </div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/nicescroll/3.5.4/jquery.nicescroll.js'></script>
+  <script src="../static/js/listener.js"></script>
 </body>
 </html>
