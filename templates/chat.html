@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <title>Chat</title>
   <link rel="stylesheet" href="../static/css/style.css">
 </head>
@@ -18,7 +19,7 @@
           <img width="50" height="50" src="https://avatars3.githubusercontent.com/u/17663363?s=460&v=4">
         </div>
         <div class="info">
-          <div class="name">Daniel Bot </div>
+          <div class="name"> Live Chat </div>
         </div>
       </div>
       <ul class="messages"> </ul>
@@ -30,5 +31,16 @@
   </div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/nicescroll/3.5.4/jquery.nicescroll.js'></script>
   <script src="../static/js/listener.js"></script>
+  <script type="text/javascript">
+    swal("Write your name:", {
+      content: "input",
+    })
+    .then((value) => {
+      current_user_name = value
+      let data = JSON.stringify({"username": "Server",
+                              "message": "The user: "+current_user_name+" has just connected" });
+      socket.send(data)
+    });
+  </script>
 </body>
 </html>

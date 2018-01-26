@@ -7,9 +7,8 @@ socketio = SocketIO(app)
 
 @socketio.on('message')
 def handlem(msg):
-    print("Message {}".format(msg))
     send(msg, broadcast=True, include_self=False)
-    #emit('message', msg, broadcast=True, include_self=False)
+    
 
 if __name__ == '__main__':
     socketio.run(app)

@@ -1,5 +1,6 @@
-var current_user_name= "Jhon Doe";
+var current_user_name= "";
 var server_address = "http://127.0.0.1:5000"
+var socket;
 
 var updateScroll = function() {
   $(".messages").getNiceScroll(0).resize();
@@ -36,12 +37,12 @@ $(document).ready(function(){
   };
   $(".list-friends").niceScroll(conf);
   $(".messages").niceScroll(lol);
-  var socket = io.connect(server_address)
+  socket = io.connect(server_address)
 
   socket.on('connect', function(){
-    let data = JSON.stringify({"username": "Server",
-                            "message": "The user: "+current_user_name+" has just connected" });
-    socket.send(data)
+    // let data = JSON.stringify({"username": "Server",
+    //                         "message": "The user: "+current_user_name+" has just connected" });
+    // socket.send(data)
   })
 
   socket.on('message', function(msg){
