@@ -5,12 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
   <title>Chat</title>
 </head>
 <body>
-  <script type="text/javascript"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      var socket = io.connect('http://127.0.0.1:5000')
+      socket.on('connect', function(){
+        socket.send('User has connected')
+      })
+      socket.on('message', function(msg){
+        $("#messages").append('<li>'+msg+'</li>')
+      })
+      $("#btnmsg").on('click', function(){
+        socket.send($("#myMessage").val())
+        $("#myMessage").val('')
+      })
+    })
+  </script>
   <ul id="messages"></ul>
   <input type="text" id="myMessage"/>
-  <button name="button">send</button>
+  <button name="button" id="btnmsg">send</button>
 </body>
 </html>
