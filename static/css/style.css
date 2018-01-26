@@ -93,7 +93,7 @@ body {
   top: 6px;
 }
 .ui .messages li .time {
-  color: #b7bccf;
+  color: black;
 }
 .ui .messages li .message {
   margin-top: 4px;
@@ -109,6 +109,7 @@ body {
 
 .ui .messages .name {
   margin-left: 20px;
+  color: black;
 }
 .ui .messages  .name:after {
   background-color: #62bf6e;
@@ -116,7 +117,7 @@ body {
   top: 6px;
 }
 .ui .messages .message {
-  background-color: #62bf6e;
+  background-color:  #bef7c6;
   float: left;
 }
 .ui .messages .message:before {
@@ -135,7 +136,7 @@ body {
   top: 6px;
 }
 .ui .messages li.i .message {
-  background-color: #7bc4ef;
+  background-color: #bce8dc; /* #7bc4ef;*/
   float: right;
 }
 .ui .messages li.i .message:before {
