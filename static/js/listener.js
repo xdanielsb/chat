@@ -37,26 +37,34 @@ $(document).ready(function(){
   $(".list-friends").niceScroll(conf);
   $(".messages").niceScroll(lol);
   var socket = io.connect(server_address)
+
   socket.on('connect', function(){
     let data = JSON.stringify({"username": "Server",
                             "message": "The user: "+current_user_name+" has just connected" });
     socket.send(data)
   })
+
   socket.on('message', function(msg){
     let info = JSON.parse(msg)
     let user = info["username"]
     let mes = info["message"]
     ResponseMessage(user, mes);
   })
+
   $("#btnmsg").on('click', function(){
-    socket.send($("#texxt").val())
+    let data = JSON.stringify({"username": current_user_name,
+                            "message": $("#texxt").val() });
+    socket.send(data)
     SendMessage();
     $("#texxt").val('')
   })
+
   $("#texxt").keypress(function(e) {
     if (e.keyCode === 13) {
+      let data = JSON.stringify({"username": current_user_name,
+                              "message": $("#texxt").val() });
+      socket.send(data)
       SendMessage();
-      socket.send($("#texxt").val())
       $("#texxt").val('')
     }
   });
