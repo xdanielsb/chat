@@ -38,6 +38,11 @@
       content: "input",
     })
     .then((value) => {
+      if(value == null){
+        value = "unknown user"
+      }else if(value.trim()==""){
+        value = "unknown user"
+      }
       current_user_name = value
       let data = JSON.stringify({"username": "Server",
                               "message": "The user: "+current_user_name+" has just connected" });
