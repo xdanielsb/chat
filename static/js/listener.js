@@ -1,5 +1,4 @@
-var current_user_id=1 ;
-var current_user_name="Daniel";
+var current_user_name= "Jhon Doe";
 var server_address = "http://127.0.0.1:5000"
 
 var updateScroll = function() {
@@ -14,7 +13,7 @@ var SendMessage = function() {
   minutes = new Date().getMinutes();
   user = "yo";
   $(".messages").append("<li class=\"i\"><div class=\"head\"><span class=\"time\">" + (hour) + ":" + (minutes) + " AM, Today</span><span class=\"name\"> "+user+"</span></div><div class=\"message\">" + innerText + "</div></li>");
-  ResponseMessage("daniel","ok");
+  //ResponseMessage("daniel","ok");
   updateScroll();
 };
 
@@ -39,14 +38,15 @@ $(document).ready(function(){
   $(".messages").niceScroll(lol);
   var socket = io.connect(server_address)
   socket.on('connect', function(){
-    data = JSON.stringify({ username: "current_user_name",
-                            message: "text",
-                            username_id :"current_user_id",
-                            destiny_user_id: "current_friend_chat_id"});
-    socket.send('User has connected')
+    let data = JSON.stringify({"username": "Server",
+                            "message": "The user: "+current_user_name+" has just connected" });
+    socket.send(data)
   })
   socket.on('message', function(msg){
-    ResponseMessage(received_msg);
+    let info = JSON.parse(msg)
+    let user = info["username"]
+    let mes = info["message"]
+    ResponseMessage(user, mes);
   })
   $("#btnmsg").on('click', function(){
     socket.send($("#texxt").val())
@@ -56,6 +56,7 @@ $(document).ready(function(){
   $("#texxt").keypress(function(e) {
     if (e.keyCode === 13) {
       SendMessage();
+      socket.send($("#texxt").val())
       $("#texxt").val('')
     }
   });
