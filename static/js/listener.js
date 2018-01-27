@@ -1,5 +1,10 @@
 var current_user_name= "";
-var server_address = 'https://' + document.domain + ':' + location.port
+/*
+  Note when you run in local change https to http
+*/
+var server_address = 'http://' + document.domain + ':' + location.port
+
+console.log(server_address)
 var socket;
 
 var updateScroll = function() {
