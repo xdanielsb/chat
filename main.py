@@ -11,7 +11,7 @@ def handlem(msg):
 
 @app.route('/')
 def homepage():
-    return render_template('chat.html', async_mode=socketio.async_mode)
+    return render_template('chat.html')
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)
