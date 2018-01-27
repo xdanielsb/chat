@@ -1,10 +1,5 @@
 var current_user_name= "";
-var server_address = "http://127.0.0.1:5000"
-var PRODUCTION = true
-if(PRODUCTION){
-  server_address = "https://webchatonline.herokuapp.com/"
-}
-
+var server_address = 'https://' + document.domain + ':' + location.port
 var socket;
 
 var updateScroll = function() {
@@ -42,6 +37,7 @@ $(document).ready(function(){
   };
   $(".list-friends").niceScroll(conf);
   $(".messages").niceScroll(lol);
+
   socket = io.connect(server_address)
 
   socket.on('connect', function(){
