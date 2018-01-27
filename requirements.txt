@@ -1,5 +1,5 @@
 blinker==1.4
-gunicorn==19.4.5
+gunicorn==18.0
 Flask-SocketIO==2.9.3
 click==6.7
 Flask==0.12.2
@@ -9,3 +9,7 @@ Jinja2==2.10
 MarkupSafe==1.0
 six==1.11.0
 Werkzeug==0.14.1
+eventlet==0.22.0
+gevent==1.2.2
+greenlet==0.4.9
+gunicorn==18.0.0
