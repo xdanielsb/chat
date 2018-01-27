@@ -1,5 +1,10 @@
 var current_user_name= "";
 var server_address = "http://127.0.0.1:5000"
+var PRODUCTION = true
+if(PRODUCTION){
+  server_address = "https://webchatonline.herokuapp.com/"
+}
+
 var socket;
 
 var updateScroll = function() {
