@@ -2,7 +2,7 @@ var current_user_name= "";
 /*
   Note when you run in local change https to http
 */
-var server_address = 'http://' + document.domain + ':' + location.port
+var server_address = 'https://' + document.domain + ':' + location.port
 
 console.log(server_address)
 var socket;
