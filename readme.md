@@ -5,8 +5,8 @@ Real time Chat
 Example
 =======
 
-<img src="assets/juan.png" width="210px">
-<img src="assets/maria.png" width="215px">
+<img src="assets/juan.png" width="220px" style="float:left">
+<img src="assets/maria.png" width="225px">
 
 
 Usage
