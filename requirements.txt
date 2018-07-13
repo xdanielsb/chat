@@ -12,4 +12,4 @@ Werkzeug==0.14.1
 eventlet==0.22.0
 gevent==1.2.2
 greenlet==0.4.9
-gunicorn==18.0.0
+gunicorn==19.5.0
